@@ -1,0 +1,32 @@
+from server_management import *
+
+management = Server_Management()
+connection = management.connect('', '', '')
+cpu_usage = management.get_cpu_usage(connection)
+memory_usage = management.get_memory_usage(connection)
+service = management.check_service(servicename='', connection=connection)
+restart_service = management.restart_service(servicename='Spooler', connection=connection)
+boottime = management.get_boot_time(connection)
+free_disk_space = management.get_free_disk_space(connection, 'c')
+logged_on_users = management.get_logged_users(connection)
+reboot_server = management.reboot_server(servername="windevtest01", credentials={
+  'username': '<username>', 
+  'password': '<password>'})
+ping = management.ping_server("")
+traceroute = management.traceroute("")
+processes = management.get_processes(connection)
+events = management.get_recent_events(connection)
+hostname = management.get_hostname(connection)
+print(f"Last boot up time is {boottime}")
+print(f"CPU usage is {cpu_usage} %")
+print(f"Memory usage is {memory_usage}%")
+print(f"DNS service is {service}")
+print(f"Disk space information: {free_disk_space}")
+print(f"Logged on users are: {logged_on_users}")
+print(f"Ping statistics are: {ping}")
+print(f"Trace route statistics are: {traceroute}")
+print(f"Hostname is: {hostname}")
+print(f"Processes running are: {processes}")
+print(f"Server reboot: {reboot_server}")
+print(f"Spooler service is {restart_service}")
+
